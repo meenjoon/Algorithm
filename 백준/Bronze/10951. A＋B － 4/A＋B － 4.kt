@@ -18,7 +18,9 @@ fun main(args: Array<String>) {
                 val st = StringTokenizer(line)
                 val aa = st.nextToken().toInt()
                 val bb = st.nextToken().toInt()
-                println("${aa+bb}")
+                bw.write("${aa+bb}")
+                bw.newLine()
+                bw.flush()
             }
         }
 
