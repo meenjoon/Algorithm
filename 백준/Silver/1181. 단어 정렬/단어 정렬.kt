@@ -1,30 +1,31 @@
-import java.io.*
-fun main() = with(System.`in`.bufferedReader()) {
+import java.io.BufferedReader
+import java.io.BufferedWriter
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+import java.util.*
+fun main() {
+
+    val br = BufferedReader(InputStreamReader(System.`in`))
     val bw = BufferedWriter(OutputStreamWriter(System.out))
 
-    val set = hashSetOf<String>()
-    //겹치지 않도록 hashSet 이용
-    val n = readLine().toInt()
+    val st = StringTokenizer(br.readLine())
+    val n = st.nextToken().toInt()
 
-    for(i in 0 until n) {
-        set.add(readLine())
+    var list = mutableListOf<String>()
+
+    for(temp in 1..n){
+        val st2 = StringTokenizer(br.readLine())
+        var a = st2.nextToken().toString()
+
+        list.add(a)
     }
 
-    set.toMutableList().apply {
-        //hashSet은 sortedWith 밖에 호출되지 않기 때문에,
-        //sortWith가 가능한 mutableList로 변경.
-        sortWith(Comparator { o1, o2 ->
-            if (o1.length == o2.length) {
-                o1.compareTo(o2)
-            } else {
-                o1.length - o2.length
-            }
-        })
-        this.forEach {
-            bw.write("$it\n")
-        }
-    }
+    var set = list.toMutableSet().sortedWith(compareBy({it.length},{it}))
 
+    for(temp in set){
+        bw.write("$temp\n")
+    }
     bw.flush()
     bw.close()
+
 }
