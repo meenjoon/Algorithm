@@ -1,18 +1,33 @@
-fun main(){
-    val num = readLine()!!.toInt()
-    val arr = ArrayList<Pair<Int,Int>>()
-    for(i in 0 until num){
-        val line = readLine()!!.split(" ").map{it.toInt()}
-        arr.add(Pair(line[0],line[1]))
+import java.io.BufferedReader
+import java.io.BufferedWriter
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+import java.util.*
+fun main() {
+
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = BufferedWriter(OutputStreamWriter(System.out))
+
+    val st = StringTokenizer(br.readLine())
+    val n = st.nextToken().toInt()
+
+    var array = Array(n) {IntArray(2)}
+
+    for((index, element) in (1..n.toInt()).withIndex()){
+        val st2 = StringTokenizer(br.readLine())
+        val a = st2.nextToken().toInt()
+        var b = st2.nextToken().toInt()
+        array[index][0] = a
+        array[index][1] = b
     }
-    arr.sortWith(Comparator{d1,d2 -> if(d1.second == d2.second) {
-        d1.first - d2.first
-    }else{
-        d1.second-d2.second
+
+   array.sortWith(compareBy({it.last()},{it.first()}))
+
+    for((index, element) in (1..n.toInt()).withIndex()){
+        bw.write("${array[index][0]} ${array[index][1]}\n")
     }
-    })
- 
-    for(i in 0 until num){
-        println("${arr[i].first} ${arr[i].second}")
-    }
+
+    bw.flush()
+    bw.close()
+
 }
