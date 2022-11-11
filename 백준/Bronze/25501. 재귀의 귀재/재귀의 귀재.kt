@@ -1,40 +1,45 @@
-fun main(args: Array<String>) {
-    // 입력
-    val testCase = readln().toInt()
-    val tcList = ArrayList<String>()
-    for (i in 1..testCase) {
-        tcList.add(readln())
+import java.io.BufferedReader
+import java.io.BufferedWriter
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+import java.lang.reflect.Array
+import java.util.*
+import kotlin.collections.ArrayList
+
+
+var count = 0
+
+fun main() {
+
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = BufferedWriter(OutputStreamWriter(System.out))
+
+    val st = StringTokenizer(br.readLine())
+    val n = st.nextToken().toInt()
+
+
+
+    for(temp in 1..n){
+        val st2 =StringTokenizer(br.readLine())
+        val a = st2.nextToken().toString()
+
+        bw.write("${isPalindrome(a)} $count\n")
+
+
     }
-    // 출력
-    val sb = StringBuilder()
-    tcList.forEach { str -> sb.append(findPalindromeInfo(str)).append("\n") }
-    if (sb.isNotEmpty()) {
-        sb.setLength(sb.length - 1)
-    }
-    print(sb.toString())
+    
+    bw.flush()
+    bw.close()
+
+}
+fun recursion(s: String, l: Int, r: Int): Int {
+    count += 1
+    if(l >= r) return 1
+    else if(s[l] != s[r]) return 0
+    else return recursion(s, l+1, r-1)
 }
 
-// isPalindrome 과 recursion 함수의 호출 횟수
-fun findPalindromeInfo(str: String): String {
-    var start = 0
-    var end = str.length - 1
-    var isPalindrome = 1
-    var rCount = 0
-
-    while (start <= end) {
-        rCount++
-        if (str[start] != str[end]) {
-            isPalindrome = 0
-            break
-        }
-        start++
-        end--
-    }
-
-    // 구조적 차이에 의한 보정
-    if (isPalindrome == 1 && str.length % 2 == 0) {
-        rCount++
-    }
-
-    return "$isPalindrome $rCount"
+fun isPalindrome(s: String): Int {
+    count = 0
+    return recursion(s, 0, s.length - 1)
 }
