@@ -1,62 +1,40 @@
-
 class Solution {
     fun solution(s: String): Int {
         var answer: Int = -1
-
-
-        val set = mutableSetOf<Char>()
 
         val stringBuilder = StringBuilder()
 
         var totalCount = 0
 
-        var boolean = true
-
-
         for(index in 0 until s.length) {
-            val a = s.substring(index, s.length) + s.substring(0,index)
-//            for(index2 in index until s.length) {
-//                    set.add(s[index2])
-//            }
-//
-//            for(index3 in 0..index) {
-//                set.add(s[index3])
-//            }
-//
-//            val list = set.toList()
 
+            val s_Roatate = s.substring(index, s.length) + s.substring(0,index) // 회전한 문자열
+//            println("${s.substring(index, s.length)} ${s.substring(0,index)}")
 
-            for(index4 in 0 until a.length) {
+            for(index4 in 0 until s_Roatate.length) { //짝이 맞으면 지우는 로직이고, 짝이 맞지 않으면 stringBuilder에 짝이 맞지 않는 괄호들이 남기 때문에 이부분을 통해 isEmpty()를 이용해 올바른 괄호 문자열을 판별한다.
 
                 if(stringBuilder.isEmpty()) {
-                    stringBuilder.append(a[index4])
+                    stringBuilder.append(s_Roatate[index4])
                 }
-                else if(a[index4] == ')' && stringBuilder.last() =='(') {
+                else if(s_Roatate[index4] == ')' && stringBuilder.last() =='(') {
                     stringBuilder.deleteCharAt(stringBuilder.length-1)
                 }
-                else if(a[index4] == '}' && stringBuilder.last() =='{') {
+                else if(s_Roatate[index4] == '}' && stringBuilder.last() =='{') {
                     stringBuilder.deleteCharAt(stringBuilder.length-1)
                 }
-                else if(a[index4] == ']' && stringBuilder.last() =='[') {
+                else if(s_Roatate[index4] == ']' && stringBuilder.last() =='[') {
                     stringBuilder.deleteCharAt(stringBuilder.length-1)
                 }
                 else {
-                    stringBuilder.append(a[index4])
+                    stringBuilder.append(s_Roatate[index4])
                 }
             }
-//            println("$index $stringBuilder")
-
             if(stringBuilder.isEmpty()) {
-//                println("index : $index")
                 totalCount++
             }
 
-//            println(set)
-//            set.clear()
             stringBuilder.clear()
         }
-
-//        println(totalCount)
 
         answer = totalCount
 
