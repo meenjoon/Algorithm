@@ -1,17 +1,10 @@
 class Solution {
-    
-    
     fun solution(n: Int, left: Long, right: Long): IntArray {
-         
-        var answer = IntArray((right-left).toInt()+1)
+        val answer = IntArray((right-left).toInt()+1)
         
-        var idx = left
-        
-        for(i in answer.indices){
-            val r = (idx/n.toLong()).toInt()
-            val c = (idx%n.toLong()).toInt()
-            answer[i] = r.coerceAtLeast(c) +1
-            idx++
+        for((index,value) in (left..right).withIndex()) {
+            val num = Math.max(value % n, value/ n) + 1
+            answer[index] = num.toInt()
         }
         
         return answer
