@@ -1,5 +1,6 @@
 class Solution {
     fun solution(arr1: Array<IntArray>, arr2: Array<IntArray>): Array<IntArray> {
+        
         var answer = Array(arr1.size){IntArray(arr2[0].size)}
 
         for(i in 0 until arr1.size) {
