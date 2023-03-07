@@ -64,3 +64,48 @@ class Solution {
         return answer
     }
 }
+
+
+//  fun solution(name: String): Int {
+//         var answer = 0
+
+//         val stringBuilder = StringBuilder()
+
+//         val set = mutableSetOf<String>()
+
+//         val visited = BooleanArray(name.length)
+
+//         /**
+//          * dfs 함수로 구현한 순열(순서 있는 조합)
+//          * 초기에 미리 설정해놓을 것은,
+//          * 1-1. visited 라는 BooleanArray를 구하려는 값의 length만큼 사이즈를 할당하여 생성한다.
+//          * 1-2. 데이터를 넣을 stringBuilder를 생성한다.
+//          * 1-3. 중복이 불가능하게 Set 컬렉션을 생성한다.
+//          */
+//         fun dfs(depth: Int) {
+//             if(depth == name.length) { //만약 탐색하는 깊이가 구하려는 값의 length와 같다면
+//                 if(stringBuilder.toString() != "") { //stringBuilder의 값이 공백이 아니라면
+//                     set.add(stringBuilder.toString()) //만들어둔 Set 컬렉션에 stringBuilder의 값을 추가한다.
+//                     return //리턴
+//                 }
+//                 else { //stringBuilder의 값이 공백이라면 바로 리턴
+//                     return
+//                 }
+//             }
+//             for(index in 0 until name.length) { //0부터 구하려는 값의 사이즈 만큼 반복한다.
+//                 if (!visited[index]) { //만약 현재 인덱스가 방문하지 않은 인덱스라면
+//                     visited[index] = true //현재 인덱스를 방문처리를 한다.
+//                     stringBuilder.append(name[index]) //현재 구하려는 값의 인덱스 위치에 있는 값을 stringBuilder에 추가한다.
+//                     dfs(depth + 1) //현재 깊이의 +1 만큼의 재귀함수 호출
+//                     visited[index] = false //재귀함수 빠져나갔으니 다시 방문을 하지 않았다고 한다.
+//                     stringBuilder.deleteCharAt(stringBuilder.length-1)//stringBuilder의 마지막 값을 삭제한다.
+//                     dfs(depth + 1) //현재 깊이의 +1 만큼의 재귀함수 호출
+//                 }
+//             }
+//         }
+//         dfs(0)
+
+//         set.forEach { println(it) } //함수 확인
+
+//         return answer
+//     }
