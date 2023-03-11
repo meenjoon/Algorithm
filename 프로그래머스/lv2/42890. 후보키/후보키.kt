@@ -9,7 +9,7 @@ class Solution {
 
         val list = mutableSetOf<String>() //데이터의 인덱스 위치를 담는 중복이 불가능한 set
 
-        val minimumList = mutableSetOf<String>() //최소성을 만족하는 list
+        val minimumList = mutableSetOf<String>() //최소성,유일성을 만족하는 set
 
         /**
          * 1개부터 열의 개수만큼의 조합을 만들어주는 combination 함수
