@@ -60,7 +60,6 @@ class Solution {
                 )
             }
         }
-
         return stringBuilder.toString()
     }
 }
