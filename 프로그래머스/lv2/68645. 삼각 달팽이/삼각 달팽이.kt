@@ -5,8 +5,6 @@ class Solution {
 
         val matrix = Array(n) {IntArray(n)}
 
-
-
         var x = -1
         var y = 0
 
@@ -40,7 +38,6 @@ class Solution {
         }
 
 //        answer.forEach { print(it) }
-
 
         return answer
     }
