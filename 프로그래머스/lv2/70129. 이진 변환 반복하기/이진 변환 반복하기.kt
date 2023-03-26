@@ -47,8 +47,6 @@ class Solution {
             binary_Count++
         }
 
-
-
         return intArrayOf(binary_Count,totalZeroCount)
     }
 }
