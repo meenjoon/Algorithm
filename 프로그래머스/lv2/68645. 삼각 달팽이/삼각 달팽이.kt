@@ -1,6 +1,7 @@
 //참고 : https://minhamina.tistory.com/58
 class Solution {
     fun solution(n: Int): IntArray {
+        
         var answer = IntArray(n*(n+1)/2)
 
         val matrix = Array(n) {IntArray(n)}
