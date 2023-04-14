@@ -1,5 +1,6 @@
 class Solution {
     fun solution(k: Int, dungeons: Array<IntArray>): Int {
+        
         var answer: Int = -1
 
         val visit = BooleanArray(dungeons.size)
