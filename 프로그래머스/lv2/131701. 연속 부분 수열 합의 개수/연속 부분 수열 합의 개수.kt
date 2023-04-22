@@ -1,6 +1,5 @@
 class Solution {
     fun solution(elements: IntArray): Int {
-        
         var answer: Int = 0
 
         val array = IntArray(elements.size*2){ 0 }
