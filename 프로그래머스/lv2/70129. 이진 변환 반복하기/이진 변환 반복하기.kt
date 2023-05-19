@@ -1,6 +1,5 @@
 class Solution {
     fun solution(s: String): IntArray {
-    
         var string = s
 
         val stringBuilder = StringBuilder()
