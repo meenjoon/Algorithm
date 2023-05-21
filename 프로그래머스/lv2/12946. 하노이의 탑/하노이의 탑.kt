@@ -1,5 +1,6 @@
 class Solution {
     fun solution(n: Int): Array<IntArray> {
+        
         var answer = arrayOf<IntArray>()
 
         val list = mutableListOf<IntArray>()
