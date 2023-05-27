@@ -1,5 +1,6 @@
 class Solution {
     fun solution(left: Int, right: Int): Int {
+        
         var answer: Int = 0
 
         var total = 0
