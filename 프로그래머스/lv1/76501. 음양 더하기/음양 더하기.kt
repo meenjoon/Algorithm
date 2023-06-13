@@ -1,7 +1,8 @@
 class Solution {
     fun solution(absolutes: IntArray, signs: BooleanArray): Int {
-        
+    
         val answer: Int = 123456789
+        
         val array = arrayOfNulls<Int>(absolutes.size)
         var ss: Int = 0
 
