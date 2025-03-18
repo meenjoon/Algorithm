@@ -1,38 +1,40 @@
-import java.io.*
 import java.util.*
 
 fun main() {
-    var br = BufferedReader(InputStreamReader(System.`in`))
-    var bw = BufferedWriter(OutputStreamWriter(System.out))
+    val sc = Scanner(System.`in`)
 
-    var st1 = StringTokenizer(br.readLine())
-    var s = st1.nextToken()
+    val a = sc.nextLine()
 
-    var ss = s.uppercase()
+    val countArray = getAlphabetCount(str =  a)
 
-    var map = mutableMapOf<Char,Int>()
+    val maxCnt = countArray.maxOrNull()
 
-    var max = 0
-    var maxCount = 0
-
-    for((index, element) in ss.withIndex()){
-        if(map.containsKey(element)) {
-            map[element] = map[element]!!.plus(1)
-        }
-        else{
-            map.put(element, 1)
+    var isExistCnt = 0
+    var cntIndex = 0
+    countArray.forEachIndexed { index, value ->
+        if (value == maxCnt) {
+            isExistCnt++
+            cntIndex = index
         }
     }
 
-    max = map.maxOfOrNull { it.value }!!
-    maxCount= map.count { it.value == max }
-
-    if(maxCount>1) {
+    if (isExistCnt > 1) {
         print("?")
+    } else {
+        print('A' + cntIndex)
     }
-    else{
-        bw.write(map.filter { it -> it.value==max }.keys.joinToString())
+}
+
+fun getAlphabetCount(str: String): IntArray {
+    val contArray = IntArray(26)
+
+    for(i in 0..str.length-1) {
+        if(str[i] >= 'A' && str[i] <= 'Z') {
+            contArray[str[i].code-'A'.code]++
+        } else {
+            contArray[str[i].code-'a'.code]++
+        }
     }
-    bw.flush()
-    bw.close()
+
+    return contArray
 }
