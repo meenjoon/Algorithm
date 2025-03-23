@@ -7,7 +7,11 @@ fun main() {
     val bw = BufferedWriter(OutputStreamWriter(System.`out`))
 
     while (true) {
-        val line = readLine() ?: break
-        println(line)
+        val line = br.readLine() ?: break
+
+        bw.write("$line\n")
     }
+
+    bw.flush()
+    bw.close()
 }
