@@ -1,33 +1,28 @@
-package lv1
+import java.io.*
 
-import java.io.BufferedReader
-import java.io.BufferedWriter
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.util.StringTokenizer
+fun main() {
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = BufferedWriter(OutputStreamWriter(System.`out`))
 
-fun main(args: Array<String>){
-    var br = BufferedReader(InputStreamReader(System.`in`))
-    var bw = BufferedWriter(OutputStreamWriter(System.out))
+    val n = br.readLine()!!.toInt()
 
-    var st = StringTokenizer(br.readLine())
-    var n = st.nextToken().toInt()
-    
-    var array = IntArray(n)
+    // 해당 숫자가 몇 개 있는지를 담기 위한 배열
+    val cnt = IntArray(10001)
 
-    for(temp in 0 until n){
-        var st2 = StringTokenizer(br.readLine())
-        var a = st2.nextToken().toInt()
-        array[temp] = a
+    // 시간 복잡도 O(max(10000, N))
+    repeat(n) {
+        cnt[br.readLine()!!.toInt()]++
     }
 
-    array.sort()
-
-    for(temp in 0 until n){
-        bw.write("${array[temp]}\n")
+    // 시간 복잡도 O(max(10000, N))
+    // --> 기본적으로 for의 반복문이 10000번 돌고, 그 외에 while 반복문이 돌기에 이 둘 중 더 큰 값으로 O(N) 시간 복잡도가 되게 된다.
+    for (i in 1 until 10001) {
+        // 해당 숫자가 여러 개 라면 0이 될 때까지 출력
+        while(cnt[i]-- > 0) {
+            bw.write("$i\n")
+        }
     }
 
     bw.flush()
     bw.close()
-
 }
