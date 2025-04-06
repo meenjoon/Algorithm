@@ -1,23 +1,18 @@
-import java.io.BufferedReader
-import java.io.BufferedWriter
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.util.StringTokenizer
+import java.io.*
 
-fun main(args: Array<String>) {
-    var br = BufferedReader(InputStreamReader(System.`in`))
-    var bw = BufferedWriter(OutputStreamWriter(System.out))
+fun main() {
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = BufferedWriter(OutputStreamWriter(System.`out`))
 
-    var array = IntArray(10)
+    val array = BooleanArray(1000) { false }
 
-    for((index, element) in (1..10).withIndex()){
-        var aa = StringTokenizer(br.readLine())
-        var bb = aa.nextToken().toInt()
-        array[index] = bb % 42
+    repeat(10) {
+        val n = br.readLine()!!.toInt()
+
+        array[n % 42] = true
     }
-    array = array.toSet().toIntArray()
 
-    bw.write("${array.size}")
+    bw.write("${array.count{ it }}")
+    bw.flush()
     bw.close()
-
 }
