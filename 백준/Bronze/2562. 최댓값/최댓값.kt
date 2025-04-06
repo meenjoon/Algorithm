@@ -1,25 +1,18 @@
-import java.io.BufferedReader
-import java.io.BufferedWriter
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.util.StringTokenizer
+import java.io.*
 
-fun main(args: Array<String>) {
-    var br = BufferedReader(InputStreamReader(System.`in`))
-    var bw = BufferedWriter(OutputStreamWriter(System.out))
+fun main() {
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = BufferedWriter(OutputStreamWriter(System.`out`))
 
-    var array = IntArray(9)
-
-
-    for((index, element) in (1..9).withIndex()){
-        var aa = StringTokenizer(br.readLine())
-        array[index] = aa.nextToken().toInt()
+    val array = IntArray(9)
+    repeat(9) {
+        array[it] = br.readLine()!!.toInt()
     }
-    var max = array.maxOrNull()
-    var maxindex = array.indexOf(max!!)
 
-    bw.write("$max\n${maxindex+1}") //배열의 인덱스는 0부터 시작하기 때문에
+    val maxNum = array.maxOrNull()
+    val maxNumIndex = array.indexOf(maxNum ?: 0)
+
+    bw.write("$maxNum\n${maxNumIndex + 1}")
     bw.flush()
     bw.close()
-
 }
