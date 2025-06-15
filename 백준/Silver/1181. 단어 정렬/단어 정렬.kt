@@ -1,31 +1,29 @@
-import java.io.BufferedReader
-import java.io.BufferedWriter
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.util.*
+import java.io.*
+
 fun main() {
-
     val br = BufferedReader(InputStreamReader(System.`in`))
-    val bw = BufferedWriter(OutputStreamWriter(System.out))
+    val bw = BufferedWriter(OutputStreamWriter(System.`out`))
 
-    val st = StringTokenizer(br.readLine())
-    val n = st.nextToken().toInt()
+    val n = br.readLine()!!.toInt()
 
-    var list = mutableListOf<String>()
-
-    for(temp in 1..n){
-        val st2 = StringTokenizer(br.readLine())
-        var a = st2.nextToken().toString()
-
-        list.add(a)
+    val array = Array(n) { "" }
+    repeat(n) { it ->
+        val word = br.readLine()!!.toString()
+        array[it] = word
     }
 
-    var set = list.toMutableSet().sortedWith(compareBy({it.length},{it}))
+    array
+        .distinct()
+        .sortedWith { a, b ->
+            if (a.length == b.length) {
+                a.compareTo(b)
+            } else {
+                a.length - b.length
+            }
+        }.forEach {
+            bw.write("$it\n")
+        }
 
-    for(temp in set){
-        bw.write("$temp\n")
-    }
     bw.flush()
     bw.close()
-
 }
